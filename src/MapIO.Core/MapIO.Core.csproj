@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Version>1.0.1</Version>
+  </PropertyGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789.`))' == 'netstandard'">
+    <PackageReference Include="System.Memory" Version="4.6.0" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <PackageReference Include="Castle.Core" Version="5.1.1" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <None Include="README.md" Pack="True" PackagePath="\">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

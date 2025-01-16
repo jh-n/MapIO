@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Version>1.0.1</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MapIO.Core" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="True" PackagePath="\">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  
+</Project>

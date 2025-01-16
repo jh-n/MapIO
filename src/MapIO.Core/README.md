@@ -1,0 +1,1 @@
+Used to operate binary or text data.
