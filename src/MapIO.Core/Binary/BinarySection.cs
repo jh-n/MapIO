@@ -34,6 +34,8 @@ namespace MapIO.Core.Binary
             _encoding = source._encoding;
         }
 
+        public MemoryStream GetInternalStream() => _source;
+
         #region Read/Write Core
         /// <summary>
         /// Reads a sequence of bytes from the current stream starting at the specified offset and with the specified length.
