@@ -82,9 +82,9 @@ namespace MapIO.TSK
 
         [Field(Offset = 108, Length = 4, Type = TypeCode.UInt32)] public virtual int TargetDiePositionX { get; set; }
         [Field(Offset = 112, Length = 4, Type = TypeCode.UInt32)] public virtual int TargetDiePositionY { get; set; }
-        [Field(Offset = 116, Length = 2, Type = TypeCode.UInt32)] public virtual ushort ReferenceDieCoordinatorX { get; set; }
-        [Field(Offset = 118, Length = 2, Type = TypeCode.UInt32)] public virtual ushort ReferenceDieCoordinatorY { get; set; }
-        [Field(Offset = 120, Length = 1, Type = TypeCode.UInt32)] public virtual ushort ProbingStartPosition { get; set; }
+        [Field(Offset = 116, Length = 2, Type = TypeCode.UInt16)] public virtual ushort ReferenceDieCoordinatorX { get; set; }
+        [Field(Offset = 118, Length = 2, Type = TypeCode.UInt16)] public virtual ushort ReferenceDieCoordinatorY { get; set; }
+        [Field(Offset = 120, Length = 1, Type = TypeCode.Byte)] public virtual ushort ProbingStartPosition { get; set; }
         /// <summary>
         /// 1: leftward 2: rightward 3: upward 4: backward
         /// </summary>

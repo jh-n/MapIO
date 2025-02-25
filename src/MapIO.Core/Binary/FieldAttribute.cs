@@ -16,6 +16,7 @@ namespace MapIO.Core.Binary
         /// <summary>
         /// Set the type of the intermediate value directly read from or written to the stream; then it will be converted to the property or field type
         /// </summary>
+        /// <remarks>When reading, its type size must be no more than <see cref="Length"/></remarks>
         public TypeCode Type { get; set; }
     }
 }
