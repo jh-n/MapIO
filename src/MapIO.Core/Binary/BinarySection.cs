@@ -325,28 +325,28 @@ namespace MapIO.Core.Binary
             switch (asTypeCode)
             {
                 case TypeCode.Byte:
-                    WriteAsByte(offset, (byte)value);
+                    WriteAsByte(offset, Convert.ToByte(value));
                     break;
                 case TypeCode.SByte:
-                    WriteAsSByte(offset, (sbyte)value);
+                    WriteAsSByte(offset, Convert.ToSByte(value));
                     break;
                 case TypeCode.Int16:
-                    WriteAsInt16(offset, (short)value);
+                    WriteAsInt16(offset, Convert.ToInt16(value));
                     break;
                 case TypeCode.UInt16:
-                    WriteAsUInt16(offset, (ushort)value);
+                    WriteAsUInt16(offset, Convert.ToUInt16(value));
                     break;
                 case TypeCode.Int32:
-                    WriteAsInt32(offset, (int)value);
+                    WriteAsInt32(offset, Convert.ToInt32(value));
                     break;
                 case TypeCode.UInt32:
-                    WriteAsUInt32(offset, (uint)value);
+                    WriteAsUInt32(offset, Convert.ToUInt32(value));
                     break;
                 case TypeCode.Int64:
-                    WriteAsInt64(offset, (long)value);
+                    WriteAsInt64(offset, Convert.ToInt64(value));
                     break;
                 case TypeCode.UInt64:
-                    WriteAsUInt64(offset, (ulong)value);
+                    WriteAsUInt64(offset, Convert.ToUInt64(value));
                     break;
 #if NET
                 case TypeCode.Single:
@@ -357,10 +357,10 @@ namespace MapIO.Core.Binary
                     break;
 #endif
                 case TypeCode.Boolean:
-                    WriteAsBoolean(offset, (bool)value);
+                    WriteAsBoolean(offset, Convert.ToBoolean(value));
                     break;
                 case TypeCode.String:
-                    WriteAsString(offset, (string)value);
+                    WriteAsString(offset, Convert.ToString(value));
                     break;
                 default:
                     throw new NotSupportedException();
