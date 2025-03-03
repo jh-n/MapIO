@@ -1,5 +1,6 @@
 ﻿using MapIO.Core;
 using MapIO.Core.Binary;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,7 +30,7 @@ namespace MapIO.TSK
     /// <item>Optional <see cref="ExtendedTestResultPerDieV2"/> / <see cref="ExtendedTestResultPerDieV3"/> / <see cref="ExtendedTestResultPerDieV4"/> / <see cref="ExtendedTestResultPerDieV5"/> / <see cref="ExtendedTestResultPerDieV7"/> list</item>
     /// </list>
     /// </summary>
-    public class TskData : BinarySection
+    public class TskData : BinarySection, IDisposable
     {
         public TskDataAccessor Accessor { get; }
 
@@ -220,5 +221,10 @@ namespace MapIO.TSK
         public Lazi<List<ExtendedTestResultPerDieV5>> ExtendedTestResultPerDieV5List { get; }
         public Lazi<List<ExtendedTestResultPerDieV7>> ExtendedTestResultPerDieV7List { get; }
 
+        public void Dispose()
+        {
+            GetInternalStream().Dispose();
+            GC.SuppressFinalize(this);
+        }
     }
 }
