@@ -220,16 +220,19 @@ namespace MapIO.TSK
             {
                 switch (DieProperty)
                 {
+                    case 3: // for special case
                     case 0: return DieState.Skip;
                     case 1:
                         switch (DieTestResult)
                         {
+                            case 0: return DieState.Skip;
                             case 1: return DieState.Pass;
-                            case 2: return DieState.Fail;
-                            default: throw new NotImplementedException();
+                            case 2:
+                            case 3: return DieState.Fail;
+                            default: throw new NotImplementedException($"Found out-of-range die test result: {DieTestResult}");
                         }
                     case 2: return DieState.Marking;
-                    default: throw new NotImplementedException();
+                    default: throw new NotImplementedException($"Found out-of-range die property: {DieProperty}");
                 }
             }
             set

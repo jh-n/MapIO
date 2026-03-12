@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryUrl>https://github.com/jh-n/MapIO.git</RepositoryUrl>
   </PropertyGroup>
@@ -18,8 +18,14 @@
     
   <ItemGroup>
     <None Include="..\..\LICENSE" Link="LICENSE" Pack="True" PackagePath="" />
-    <None Include="..\..\docs\MapIO.Core\README.md" Link="README.md" Pack="True" PackagePath="">
+    <!--<None Include="..\..\docs\MapIO.Core\README.md" Link="README.md" Pack="True" PackagePath="">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>-->
+    <None Include="..\..\docs\MapIO.Core\README.md" Pack="True" PackagePath="" Condition="'$(Targets)' == 'Pack'">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\docs\MapIO.Core\README.md" Pack="True" PackagePath="" Condition="'$(Targets)' != 'Pack'">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

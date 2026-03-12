@@ -32,6 +32,16 @@ namespace MapIO.TSK
             get
             {
                 if (MapVersion == 1) return _source.TestResultPerDieV1List.Value.Select(x => x.State).ToList();
+                /*var dies = _source.TestResultPerDieList.Value;
+                var bins = Categories;
+                var cc = ColCount;
+                dies.ForEach((x, i) =>
+                {
+                    var dp = x.DieProperty;
+                    var dtr = x.DieTestResult;
+                    if (dp.IsIn(0, 1, 2) && dtr.IsIn(0, 1, 2, 3)) return;
+                    Console.WriteLine($"[DieProperty={dp}; Pos=({i / cc,3}, {i % cc,3}); DieTestResult={x.DieTestResult}; Bin={bins[i],3}; Index={i}]");
+                });*/
                 return _source.TestResultPerDieList.Value.Select(x => x.State).ToList();
             }
             set
@@ -144,5 +154,32 @@ namespace MapIO.TSK
         {
             throw new NotImplementedException();
         }
+
+        public int FirstEffectiveRow
+        {
+            get
+            {
+                var states = DieStates;
+                for (var i = 0; i < RowCount; i++)
+                {
+                    if (states.Skip(i * ColCount).Take(ColCount).Any(x => x != DieState.Skip)) return i;
+                }
+                return 0;
+            }
+        }
+    }
+}
+
+internal static class ObjectExtensions
+{
+    /// <summary>
+    /// Check if an item is in a list.
+    /// </summary>
+    /// <param name="item">Item to check</param>
+    /// <param name="list">List of items</param>
+    /// <typeparam name="T">Type of the items</typeparam>
+    public static bool IsIn<T>(this T item, params T[] list)
+    {
+        return list.Contains(item);
     }
 }
